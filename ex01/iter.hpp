@@ -6,7 +6,7 @@
 /*   By: rthammat <rthammat@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 23:26:52 by rthammat          #+#    #+#             */
-/*   Updated: 2023/06/27 01:05:06 by rthammat         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:17:04 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void plus1(T &src)
 }
 
 template <typename T>
-void print(T &src)
+void print(const T &src)
 {
 	std::cout << src << std::endl;
 }
 
 template <typename T>
-void iter(T *arr, int len, void (*f)(T &src))
+void iter(T *arr, int len, void (*f)(const T &src))
 {
 	for (int i = 0; i < len; ++i)
 		f(arr[i]);
