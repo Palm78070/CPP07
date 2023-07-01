@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rthammat <rthammat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rthammat <rthammat@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 02:03:52 by rthammat          #+#    #+#             */
-/*   Updated: 2023/06/28 21:16:37 by rthammat         ###   ########.fr       */
+/*   Updated: 2023/07/01 14:33:34 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ template <typename T>
 class Array
 {
 public:
-	Array(void) : _arr(new T[0]()), _size(0){};
-	Array(const unsigned int size) : _arr(new T[size]()), _size(size){};
+	Array(void) : _arr(NULL), _size(0){};
+	Array(const unsigned int size) : _arr(new T[size]), _size(size){};
 	Array(const Array &src)
 	{
 		*this = src;
@@ -32,15 +32,15 @@ public:
 			if (_arr)
 				delete[] _arr;
 			_size = src._size;
-			_arr = new T[_size]();
+			_arr = new T[_size];
 			for (unsigned int i = 0; i < _size; ++i)
 				_arr[i] = src._arr[i];
 		}
 		return (*this);
 	};
-	T &operator[](unsigned int index)
+	T &operator[](unsigned int index) const
 	{
-		if (index < 0 || index >= _size)
+		if (index >= _size)
 			throw OutOfBounds();
 		return (_arr[index]);
 	};
